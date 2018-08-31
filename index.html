@@ -22,9 +22,9 @@
 					<div class="col-12">
 						<div class="col-12"> <!-- Form for search and add functions-->
 							<label for ="main-options" class="visually-hidden">Main Options</label>
-							<form id="main-options" class="main-options js-main-options">
+							<form id="main-options" class="main-options">
 								<input type="text" name="Search Bookmarks" class="search-bookmarks js-search-bookmarks" placeholder="search bookmarks...">
-								<button name="Add Bookmark" class="add-bookmark">add bookmark</button>
+								<button type="submit" name="Add Bookmark" class="add-bookmark js-add-bookmark">add bookmark</button>
 							</form>
 						</div>
 					</div>
@@ -41,21 +41,24 @@
 					</div>
 					<div class="col-8 bookmark-list js-bookmark-list">
 						<!-- THE FOLLOWING IS A TEST FORM FIELD-->
-							<div class=" add-bookmark-form js-add-bookmark-form round">
-								<label for="title-of-new-bookmark">Title:</label>
-								<input id="title-of-new-bookmark" type="text" class="title-of-new-bookmark js-title-of-new-bookmark round" required>
-								<label for="url-of-new-bookmark">URL:</label>
-								<input id="url-of-new-bookmark" type="text" class="url-of-new-bookmark js-url-of-new-bookmark round" required><br>
-								<label for="desc-of-new-bookmark">Description:</label><br>
-								<input id="desc-of-new-bookmark" type="text" class="desc-of-new-bookmark js-desc-of-new-bookmark round">
-								<span>Rating:</span>
-								<input type="radio" name="circles" value="1"> <span class="rating-name">1</span>
-								<input type="radio" name="circles" value="2"> <span class="rating-name">2</span>
-								<input type="radio" name="circles" value="3"> <span class="rating-name">3</span>
-								<input type="radio" name="circles" value="4"> <span class="rating-name">4</span>
-								<input type="radio" name="circles" value="5"> <span class="rating-name">5</span>
-								<button class="cancel-add-btn round">cancel</button>
-								<button class="add-bookmark-btn round">add</button>
+							<!-- <div class=" add-bookmark-box js-add-bookmark-box round">
+								<label for="add-bookmark-form visually-hidden">Add a new bookmark</label>
+								<form id="add-bookmark-form" class="add-bookmark-form js-add-bookmark-form">
+									<label for="title-of-new-bookmark">Title:</label>
+									<input id="title-of-new-bookmark" type="text" class="title-of-new-bookmark js-title-of-new-bookmark round" required>
+									<label for="url-of-new-bookmark">URL:</label>
+									<input id="url-of-new-bookmark" type="text" class="url-of-new-bookmark js-url-of-new-bookmark round" required><br>
+									<label for="desc-of-new-bookmark">Description:</label><br>
+									<input id="desc-of-new-bookmark" type="text" class="desc-of-new-bookmark js-desc-of-new-bookmark round">
+									<span>Rating:</span>
+									<input type="radio" name="circles" value="1"> <span class="rating-name">1</span>
+									<input type="radio" name="circles" value="2"> <span class="rating-name">2</span>
+									<input type="radio" name="circles" value="3"> <span class="rating-name">3</span>
+									<input type="radio" name="circles" value="4"> <span class="rating-name">4</span>
+									<input type="radio" name="circles" value="5"> <span class="rating-name">5</span>
+									<button class="cancel-add-btn round">cancel</button>
+									<button type="submit" class="add-bookmark-btn round">add</button>
+								</form>
 							</div>
 
 							<div class = "bookmark-element round">
@@ -71,7 +74,7 @@
 									<p class="bookmark-description js-bookmark-description">A search Engine that follows you everywhere!</p>
 									<button class="edit-btn js-edit-btn round">edit</button> 
 									<button class="delete-btn js-delete-btn round">delete</button>
-							</div>
+							</div> -->
 						<!----------------------------------------->
 					</div>
         </div>

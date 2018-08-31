@@ -1,4 +1,5 @@
 const api = function() {
+	console.log('api is running');
 	const BASE_URL = ' https://thinkful-list-api.herokuapp.com/joe/bookmarks';
 
 	const getBookmarks = function(callback) {
@@ -6,10 +7,8 @@ const api = function() {
 		$.getJSON(`${BASE_URL}`, callback);
 	};
 
-	const createNewBookmark = function(title, callback, errorCallback) {
-		let newBookmark = JSON.stringify({
-			title: title
-		});
+	const createNewBookmark = function(bookmarkInfo, callback, errorCallback) {
+		let newBookmark = JSON.stringify(bookmarkInfo);
 		$.ajax({
 			url: `${BASE_URL}`,
 			method: 'POST',
@@ -20,16 +19,16 @@ const api = function() {
 		});
 	};
 
-	const updateBookmark = function(id, newTitle, callback, errorCallback) {
-		$.ajax({
-			url: `${BASE_URL}/${id}`,
-			method: 'PATCH',
-			contentType: 'application/json',
-			data: JSON.stringify(newTitle),
-			success: callback,
-			error: errorCallback
-		});
-	};
+	// const updateBookmark = function(id, newTitle, callback, errorCallback) {
+	// 	$.ajax({
+	// 		url: `${BASE_URL}/${id}`,
+	// 		method: 'PATCH',
+	// 		contentType: 'application/json',
+	// 		data: JSON.stringify(newTitle),
+	// 		success: callback,
+	// 		error: errorCallback
+	// 	});
+	// };
 
 	const deleteBookmark = function(id, callback, errorCallback) {
 		//delete a bookmark on the api store
@@ -45,7 +44,7 @@ const api = function() {
 	return {
 		getBookmarks,
 		createNewBookmark,
-		updateBookmark,
+		// updateBookmark,
 		deleteBookmark
 	};
 }();
