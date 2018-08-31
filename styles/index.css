@@ -40,7 +40,7 @@ body {
     height: 30px;
     border: none;
     border-radius: 5px;
-    margin-left: 25%;
+    margin-left: 26%;
     padding-left: 5px;
 }
 
@@ -138,4 +138,12 @@ body {
 .delete-btn {
     background-color:  rgb(255, 225, 58);
     margin: none;
+}
+
+a {
+    color: rgb(255, 225, 58);
+}
+
+a:hover {
+    color: white;
 }

@@ -1,6 +1,7 @@
 const store = function() {
 	console.log('store is running');
 	const addBookmark = function(bookmark) {
+		bookmark.expand = false;
 		this.bookmarks.push(bookmark);
 	};
 

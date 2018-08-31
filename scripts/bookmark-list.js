@@ -38,7 +38,7 @@ const bookmarkList = function(){
 
 	const generateBookmarkHTML = function(bookmark) {
 		return `
-		<div class = "bookmark-element round">
+		<div class = "bookmark-element round" data-item-id="${bookmark.id}">
 			<p class="bookmark-title">${bookmark.title}
 				<span class="bookmark-rating">${bookmark.rating}</span>
 			</p>
@@ -46,16 +46,73 @@ const bookmarkList = function(){
 		`;
 	};
 
-	const generateExpandedBookmark = function() {
-		return `
+	const generateBookmarksString = function(list) {
+		const bookmarks = list.map( function(bookmark) {
+			if(bookmark.expand === true) {
+				return generateExpandedBookmarkHTML(bookmark);
+			} else{
+				return generateBookmarkHTML(bookmark);
+			}
+		});
+		return bookmarks.join('');
+	};
 
+	const generateExpandedBookmarkHTML = function(bookmark) {
+		return `
+			<div class = "bookmark-element round" data-item-id="${bookmark.id}">
+				<p class="bookmark-title">${bookmark.title}
+						<span class="bookmark-rating">${bookmark.rating}</span>
+				</p>
+				<p class="bookmark-description">${bookmark.desc}</p>
+				<span class="bookmark-url"><a href="${bookmark.url}">${bookmark.url}</a></span>
+				<button class="edit-btn js-edit-btn round">edit</button> 
+				<button class="delete-btn js-delete-btn round">delete</button>
+			</div>
 		`;
+	};
+
+	const getIdFromBookmark = function(bookmark) {
+		return $(bookmark)
+			.closest('.bookmark-element')
+			.data('item-id');
+	};
+
+	const findBookmarkById = function(id) {
+		 return store.bookmarks.find(bookmark => bookmark.id === id);
+	};
+
+	const handleExpandBookmark = function(){
+		console.log("event listener expand working");
+		$('.bookmark-list').on('click', '.bookmark-element', function(event) {
+			const id = getIdFromBookmark($(this));
+			console.log(id);
+			const bookmarkToExpand = findBookmarkById(id);
+			console.log(bookmarkToExpand);
+			bookmarkToExpand.expand = !bookmarkToExpand.expand;
+			render();
+		});
+	};
+
+	const handleDeleteBookmark = function(){
+		console.log("delete button waiting...");
+		$('.bookmark-list').on('click', '.delete-btn', function(event) {
+			const id = getIdFromBookmark($(this));
+			api.deleteBookmark(id, 
+				function(data) {console.log("success")}, 
+				function(data) {console.log('error')});
+		});
+		api.getBookmarks();
+		render();
 	};
 
 	const render = function() {
 		console.log('render ran');
+		api.getBookmarks((bookmarklist) => {
+			bookmarklist.forEach((item) => store.addBookmark(item));
+		});
 		let bookmarks = store.bookmarks;
-
+		const html = generateBookmarksString(bookmarks);
+		$('.bookmark-list').html(html);
 	};
 
 	const handleNewBookmarkForm = function() {
@@ -74,9 +131,10 @@ const bookmarkList = function(){
 			console.log("preventing default");
 			const bookmarkInfo = getBookmarkDataFromForm();
 			api.createNewBookmark(bookmarkInfo, 
-			function(data) {console.log("Bookmark Added")},
-			function(data) {console.log("Error Ocurred")});
+				function(data) {console.log("Bookmark Added")},
+				function(data) {console.log("Error Ocurred")});
 			console.log("post request sent");
+			render();
 		});
 	};
 
@@ -92,31 +150,6 @@ const bookmarkList = function(){
 			desc,
 			rating,
 		};
-	};
-
-
-	const generateNewBookmarkHTML = function(bookmark) {
-		//creates new bookmark
-		return `
-			<div class = "bookmark-element round">
-				<p class="bookmark-title" data-item-id="${bookmark.id}">${bookmark.title}
-						<span class="bookmark-rating">&#9675;&#9675;</span>
-				</p>
-			</div>
-		`;
-	};
-
-	const generateExpandedBookmarkHTML = function(bookmark) {
-		return 	`
-		<div class = "bookmark-element round">
-			<p class="bookmark-title" data-item-id="${bookmark.id}">${bookmark.title}
-					<span class="bookmark-rating">&#9675;&#9675;</span>
-			</p>
-			<p class="bookmark-description js-bookmark-description">A search Engine that follows you everywhere!</p>
-			<button class="edit-btn js-edit-btn round">edit</button> 
-			<button class="delete-btn js-delete-btn round">delete</button>
-		</div>
-		`;
 	};
 
 	// const handleNewBookmarkSubmit= function(title) {
@@ -137,6 +170,8 @@ const bookmarkList = function(){
 
 	const bindEventListeners = function() {
 		handleNewBookmarkForm();
+		handleExpandBookmark();
+		handleDeleteBookmark();
 	};
 
 	return {

@@ -19,17 +19,6 @@ const api = function() {
 		});
 	};
 
-	// const updateBookmark = function(id, newTitle, callback, errorCallback) {
-	// 	$.ajax({
-	// 		url: `${BASE_URL}/${id}`,
-	// 		method: 'PATCH',
-	// 		contentType: 'application/json',
-	// 		data: JSON.stringify(newTitle),
-	// 		success: callback,
-	// 		error: errorCallback
-	// 	});
-	// };
-
 	const deleteBookmark = function(id, callback, errorCallback) {
 		//delete a bookmark on the api store
 		$.ajax({
@@ -44,7 +33,6 @@ const api = function() {
 	return {
 		getBookmarks,
 		createNewBookmark,
-		// updateBookmark,
 		deleteBookmark
 	};
 }();
