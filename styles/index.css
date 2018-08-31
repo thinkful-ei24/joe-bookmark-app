@@ -24,3 +24,29 @@ body {
     text-align: center;
     font-weight: bolder;
 }
+
+::placeholder {
+    color: rgb(151, 151, 151);
+}
+
+.search-bookmarks {
+    display: inline-block;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 23%;
+    padding-left: 5px;
+}
+
+.add-bookmark {
+    background-color: rgb(83, 83, 83);
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: bolder;
+    vertical-align: 8px;
+}
