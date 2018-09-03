@@ -23,21 +23,28 @@
 						<div class="col-12"> <!-- Form for search and add functions-->
 							<label for ="main-options" class="visually-hidden">Main Options</label>
 							<form id="main-options" class="main-options">
-								<input type="text" name="Search Bookmarks" class="search-bookmarks js-search-bookmarks" placeholder="NOT FINISHED YET!! STILL WORKING ON IT">
+								<input type="text" name="Search Bookmarks" class="search-bookmarks js-search-bookmarks" placeholder="Search through bookmarks">
 								<button type="submit" name="Add Bookmark" class="add-bookmark js-add-bookmark">add bookmark</button>
 							</form>
 						</div>
 					</div>
 					<div class="col-3 sort-box">
 						<label for="sort-by-#-rating">Sort by rating</label>
-						<form id="sort-by-#-rating" class="sort-by-#-rating js-sort-by-#-rating">
+						<!-- <form id="sort-by-#-rating" class="sort-by-#-rating js-sort-by-#-rating">
 							<input type="radio" name="circles" value="All"> <span class="rating-name">Show All</span><br>
-							<input type="radio" name="circles" value="1"> <span class="rating-name">1 circle</span><br>
-							<input type="radio" name="circles" value="2"> <span class="rating-name">2 circles</span><br>
-							<input type="radio" name="circles" value="3"> <span class="rating-name">3 circles</span><br>
-							<input type="radio" name="circles" value="4"> <span class="rating-name">4 circles</span><br>
-							<input type="radio" name="circles" value="5"> <span class="rating-name">5 circles</span>
-						</form>
+							<input type="radio" name="circles" value="1"> <span class="rating-name">1</span><br>
+							<input type="radio" name="circles" value="2"> <span class="rating-name">2</span><br>
+							<input type="radio" name="circles" value="3"> <span class="rating-name">3</span><br>
+							<input type="radio" name="circles" value="4"> <span class="rating-name">4</span><br>
+							<input type="radio" name="circles" value="5"> <span class="rating-name">5</span>
+						</form> -->
+						<select id="sort-by-#-rating" class="rating-selection">
+							<option name="rating" value="1"> <span class="rating-name">1</span></option>
+							<option name="rating" value="2"> <span class="rating-name">2</span></option>
+							<option name="rating" value="3"> <span class="rating-name">3</span></option>
+							<option name="rating" value="4"> <span class="rating-name">4</span></option>
+							<option name="rating" value="5"> <span class="rating-name">5</span></option>
+						</select>
 					</div>
 					<div class="col-8 bookmark-list">
 						<!-- THE FOLLOWING IS A TEST FORM FIELD-->

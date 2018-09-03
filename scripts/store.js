@@ -6,11 +6,11 @@ const store = function() {
 	};
 
 	const findById = function(id) {
-		this.items = this.items.filter(bookmark => bookmark.id === id);
+		this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id === id);
 	};
 
 	const findAndDelete = function(id) {
-		this.items = this.items.filter(bookmark => bookmark.id !== id);
+		this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
 	};
 
 
@@ -19,7 +19,7 @@ const store = function() {
 		sortByRating: 0,
 		searchTerm: '',
 		addingBookmark: false,
-		ratingSort: 0,
+		ratingSort: 1,
 		addBookmark,
 		findById,
 		findAndDelete,
