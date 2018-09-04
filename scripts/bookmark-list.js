@@ -134,12 +134,12 @@ const bookmarkList = function(){
 				function(data) {
 					console.log('Bookmark Added');
 					store.addBookmark(data);
+					render();
 				},
-				function(data) {console.log('Error Ocurred')});
+				function(data) {alert('Error ocurred, please make sure your bookmark entries are valid.')});
 			console.log('post request sent');
 			// store.addBookmark(bookmarkInfo);
 			console.log(store.bookmarks);
-			render();
 		});
 	};
 
