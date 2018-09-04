@@ -110,6 +110,10 @@ const bookmarkList = function(){
 		console.log('render ran');
 		let bookmarks = store.bookmarks;
 
+		if (store.searchTerm) {
+			bookmarks = store.bookmarks.filter(bookmark => bookmark.title.toLowerCase().includes(store.searchTerm));
+		}
+
 		const html = generateBookmarksString(bookmarks);
 		$('.bookmark-list').html(html);
 	};
@@ -177,6 +181,16 @@ const bookmarkList = function(){
 			store.bookmarks = originalBookmarks;
 		});
 	}
+
+	const handleSearchBookmarks = function() {
+		$('.search-bookmarks').keyup(function(event) {
+			let term = $(this).val();
+			term.toLowerCase();
+			store.setSearchTerm(term);
+			render(); 
+		});
+	};
+
 	// const handleNewBookmarkSubmit= function(title) {
 	// 	$('.js-new-bookmark-form').submit(function(event) {
 	// 		event.preventDefault();
@@ -198,6 +212,7 @@ const bookmarkList = function(){
 		handleExpandBookmark();
 		handleDeleteBookmark();
 		handleMinRatingChooser();
+		handleSearchBookmarks();
 	};
 
 	return {

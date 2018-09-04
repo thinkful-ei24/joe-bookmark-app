@@ -13,6 +13,9 @@ const store = function() {
 		this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
 	};
 
+	const setSearchTerm = function(term) {
+		this.searchTerm = term;
+	};
 
 	return {
 		bookmarks: [],
@@ -20,8 +23,10 @@ const store = function() {
 		searchTerm: '',
 		addingBookmark: false,
 		ratingSort: 1,
+		searchTerm: '',
 		addBookmark,
 		findById,
 		findAndDelete,
+		setSearchTerm
 	};
 } ();
