@@ -130,6 +130,10 @@ body {
     margin-bottom: 5px;
 }
 
+.edit-btn {
+    background-color:  rgb(255, 225, 58);
+}
+
 .cancel-btn {
     background-color:  rgb(255, 225, 58);
     margin-left: 75%;
